@@ -1,0 +1,24 @@
+{
+  "name": "cybertarot",
+  "version": "0.0.1",
+  "description": "A tarot app written in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chaos",
+    "chaos",
+    "magick",
+    "tarot",
+    "technomancy",
+    "cybermagick",
+    "magick",
+    "divination"
+  ],
+  "author": "@raveneyex",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "underscore": "^1.9.1"
+  }
+}
