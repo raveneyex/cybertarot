@@ -19,6 +19,9 @@
   "author": "@raveneyex",
   "license": "UNLICENSED",
   "dependencies": {
+    "arg": "^4.1.1",
+    "esm": "^3.2.25",
+    "list-files-in-dir": "^0.1.5",
     "underscore": "^1.9.1"
   }
 }
