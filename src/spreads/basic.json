@@ -1,0 +1,9 @@
+{
+    "name": "Basic Spread",
+    "description": "A basic 3-cards spread",
+    "spread": {
+        "past": null,
+        "present": null,
+        "future": null
+    }
+}

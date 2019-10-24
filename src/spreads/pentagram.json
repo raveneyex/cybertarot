@@ -1,0 +1,11 @@
+{
+    "name": "Pentagram Spread",
+    "description": "A spread based on the pentagram",
+    "spread": {
+        "air": null,
+        "earth": null,
+        "water": null,
+        "fire": null,
+        "spirit": null
+    }
+}
