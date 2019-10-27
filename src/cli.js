@@ -9,6 +9,12 @@ import app from './app';
  * -s `value`: choose a spread with name `value`
  */
 function parseArgs(rawArgs) {
+  let showHelp = false;
+
+  if (!rawArgs || rawArgs.length <= 2) {
+    showHelp = true;
+  }
+
   const args = arg({
     '-c': Boolean,
     '-h': Boolean,
@@ -16,10 +22,10 @@ function parseArgs(rawArgs) {
     '-l': String,
     '-s': String
   },{ argv: rawArgs.slice(2) });
-
+  
   return {
-    card: args['-c'] || args['_'][0] || false,
-    help: args['-h'],
+    help: args['-h'] || showHelp,
+    card: args['-c'],
     list: args['-a'],
     load: args['-l'],
     spread: args['-s']
@@ -27,5 +33,6 @@ function parseArgs(rawArgs) {
 }
 
 export function cli(args) {
-  app().run(parseArgs(args));
+  const parsedArgs = parseArgs(args);
+  app().run(parsedArgs);
 }

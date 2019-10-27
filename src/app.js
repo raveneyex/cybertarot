@@ -7,29 +7,34 @@ function app() {
         const { help, card, list, load, spread } = options;
 
         if (help) {
-            return printHelp();
+            console.log("Help");
+            return printer.printHelp();
         }
 
         if (spread) {
+            console.log("Reading");
             return tarot(spreads.get(spread)).reveal();
         }
 
         // TBD: Step by step reveal
         // if (spread && singleStep) {
-        //     
+        //     console.log("Step by Step Reading");
         // }
 
         if (card) {
+            console.log("Card");
             return tarot().draw();
         }
 
         if (list) {
+            console.log("List");
             const files = await spreads.list();
             printer.printSpreads(files);
             return;
         }
 
         if (load) {
+            console.log("Load");
             // TBD
         }
     };
