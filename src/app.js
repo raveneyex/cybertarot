@@ -7,15 +7,14 @@ function app() {
         const { help, card, list, load, spread } = options;
 
         if (help) {
-            console.log("Help");
             return printer.printHelp();
         }
 
         if (spread) {
-            console.log(`The result for your reading using the spread ${spread} are:\n`);
+            console.log(`\nThe result for your reading using the ${spread} spread are:\n`);
             const chosenSpread = spreads.get(spread);
             const result = tarot(chosenSpread).reveal();
-            printer.printSpread(result);
+            printer.printReading(result);
             return;
         }
 
