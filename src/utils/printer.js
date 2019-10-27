@@ -1,5 +1,5 @@
 const printSpreads = (files) => {
-    console.log("The available spreads are:");
+    console.log("\tThe available spreads are:");
     files.forEach(filePath => {
         console.log(" * ", filePath.split('/').pop());
     });
@@ -18,12 +18,12 @@ const printSingleCard = (card) => {
 }
 
 const printMinorArcana = (card) => {
-    console.log(`${card.name} ${printReversed(card)}`);
+    console.log(`\t\t${card.name} ${printReversed(card)}\n`);
 }
 
 const printMajorArcana = (card) => {
     const {name, number} = card;
-    console.log(`${number} - ${name} ${printReversed(card)}`);
+    console.log(`\t\t${number} - ${name} ${printReversed(card)}\n`);
 }
 
 const printReversed = (card) => {
@@ -31,12 +31,11 @@ const printReversed = (card) => {
 }
 
 const printSpread = (spread) => {
-    for (key in spread) {
-        console.log(`\t${key}:`);
+    Object.keys(spread).forEach(key => {
+        console.log(`\t${key.toLocaleUpperCase()}:`);
         printSingleCard(spread[key]);
-    }
+    });
 }
-
 
 const printer = {
     printHelp,
