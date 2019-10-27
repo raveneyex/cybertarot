@@ -12,8 +12,11 @@ function app() {
         }
 
         if (spread) {
-            console.log("Reading");
-            return tarot(spreads.get(spread)).reveal();
+            console.log(`The result for your reading using the spread ${spread} are:\n`);
+            const chosenSpread = spreads.get(spread);
+            const result = tarot(chosenSpread).reveal();
+            printer.printSpread(result);
+            return;
         }
 
         // TBD: Step by step reveal
@@ -22,12 +25,13 @@ function app() {
         // }
 
         if (card) {
-            console.log("Card");
-            return tarot().draw();
+            console.log("Your card is\n");
+            const card = tarot().draw();
+            printer.printSingleCard(card);
+            return;
         }
 
         if (list) {
-            console.log("List");
             const files = await spreads.list();
             printer.printSpreads(files);
             return;
@@ -35,6 +39,7 @@ function app() {
 
         if (load) {
             console.log("Load");
+            return;
             // TBD
         }
     };
