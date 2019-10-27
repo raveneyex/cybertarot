@@ -9,7 +9,9 @@ function get(spreadName) {
 async function list() {
     try {
         const files = await listFiles(__dirname);
-        return files.filter(item => item.includes('.json'));
+        return files
+                .filter(item => item.includes('.json'))
+                .map(item => item.substring(0, item.indexOf('.json')));
     } catch(err) {
         console.error('Could not load spreads', err);
     }
