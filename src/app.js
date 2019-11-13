@@ -2,7 +2,7 @@ import * as printer from './utils/printer';
 import spreads from './spreads/spreads';
 import { readSpread, drawSingleCard } from './tarot/tarot';
 
-const run = async function run(options) {
+const app = async function run(options) {
     const { help, card, list, load, spread } = options;
 
     if (help) {
@@ -36,4 +36,4 @@ const run = async function run(options) {
     }
 };
 
-export default run;
+export default app;
