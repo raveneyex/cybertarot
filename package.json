@@ -1,13 +1,13 @@
 {
   "name": "cybertarot",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A tarot app written in nodejs",
   "main": "index.js",
   "bin": {
     "cybertarot": "bin/cybertarot"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm i && npm link"
   },
   "keywords": [
     "chaos",
