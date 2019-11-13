@@ -26,5 +26,8 @@
     "esm": "^3.2.25",
     "list-files-in-dir": "^0.1.5",
     "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "chalk": "^3.0.0"
   }
 }
