@@ -1,17 +1,18 @@
 import getDeck from './deck';
 
-function tarot(chosenSpread) {
-    if (!chosenSpread) {
+function tarot({ name, structure }) {
+    if (!structure) {
         // If no spread is chosen all you can do is ask for a random card
         return {
             draw: () => getDeck().drawCard()
         };
     }
 
+    
     /* Inner State */
-    const spread = {};
+    const spread = { _name: name };
     const deck = getDeck();
-    const slots = Object.keys(chosenSpread);
+    const slots = Object.keys(structure);
 
     /* Functions */
     const getSpread = () => spread;

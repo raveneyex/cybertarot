@@ -8,13 +8,48 @@ const asTitle = (message) => chalk.bgBlack.red.bold(message);
 
 const asHighlight = (message) => chalk.bgBlack.red(message);
 
+const asKey = (message) => chalk.white.inverse.bold(message);
+
+const asValue = (message) => chalk.bgBlack.white.underline(message);
+
+const printReversed = (card) => card.reversed ? asHighlight('(reversed)') : '';
+
+const asMajorArcana = (card) => {
+    const {name, number} = card;
+    const cardName = asValue(`${number} - ${name}`);
+    const reversedBagde = printReversed(card);
+
+    return `${cardName} ${reversedBagde}`;
+};
+
+const asMinorArcana = (card) => {
+    const { name } = card;
+    const cardName = asValue(name);
+    const reversedBagde = printReversed(card);
+
+    return `${cardName} ${reversedBagde}`;
+};
+
+const printCard = (card) => {
+    switch (card.arcana) {
+        case 'MAJOR':
+            return asMajorArcana(card);
+
+        case 'MINOR':
+            return asMinorArcana(card);
+
+        default:
+            break;
+    }
+};
+
 const printMessage = (message) => {
     console.log(CLEAN_SCREEN_CHARACTER);
     console.log(asTitle(RAVENEYEX_SIGIL_40x40_INVERTED));
     setTimeout(() => {
         console.log(CLEAN_SCREEN_CHARACTER);
         console.log(message);
-    }, 500);
+    }, 9);
 };
 
 const printSpreads = (files) => {
@@ -49,35 +84,18 @@ const printHelp = () => {
     printMessage(help);
 };
 
-const printSingleCard = (card) => {
-    if (card.arcana === 'MAJOR') {
-        printMajorArcana(card);
-    } else {
-        printMinorArcana(card);
-    }
-};
-
-const printMinorArcana = (card) => {
-    console.log(`\t\t${card.name} ${printReversed(card)}\n`);
-};
-
-const printMajorArcana = (card) => {
-    const {name, number} = card;
-    console.log(`\t\t${number} - ${name} ${printReversed(card)}\n`);
-};
-
-const printReversed = (card) => {
-    return card.reversed
-        ? chalk.bgBlack.redBright('(reversed)')
-        : '';
-};
-
 const printReading = (spread) => {
-    Object.keys(spread).forEach(key => {
-        console.log(`\t${key.toLocaleUpperCase()}:`);
-        printSingleCard(spread[key]);
-    });
-};
+    const title = asTitle(`${TAB}* ${spread._name.toLocaleUpperCase()} *\n`)
+    const entries = Object
+        .keys(spread)
+        .filter(key => !key.startsWith('_'))
+        .map(key =>
+            `${TAB}${asKey(key.toLocaleUpperCase())}${TAB}${printCard(spread[key])}`)
+        .join('\n\n');
+    printMessage(`${title}\n${entries}`);
+}
+
+const printSingleCard = (card) => console.log(printCard(card));
 
 const printer = {
     printHelp,

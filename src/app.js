@@ -11,17 +11,11 @@ function app() {
         }
 
         if (spread) {
-            console.log(`\nThe result for your reading using the ${spread} spread are:\n`);
             const chosenSpread = spreads.get(spread);
             const result = tarot(chosenSpread).reveal();
             printer.printReading(result);
             return;
         }
-
-        // TBD: Step by step reveal
-        // if (spread && singleStep) {
-        //     console.log("Step by Step Reading");
-        // }
 
         if (card) {
             console.log("Your card is\n");
