@@ -1,42 +1,39 @@
-import printer from './utils/printer';
+import * as printer from './utils/printer';
 import spreads from './spreads/spreads';
-import tarot from './tarot/tarot';
+import { readSpread, drawSingleCard } from './tarot/tarot';
 
-function app() {
-    const run = async (options) => {
-        const { help, card, list, load, spread } = options;
+const run = async function run(options) {
+    const { help, card, list, load, spread } = options;
 
-        if (help) {
-            return printer.printHelp();
-        }
+    if (help) {
+        printer.printHelp();
+        return;
+    }
 
-        if (spread) {
-            const chosenSpread = spreads.get(spread);
-            const result = tarot().read(chosenSpread);
-            printer.printReading(result);
-            return;
-        }
+    if (spread) {
+        const chosenSpread = spreads.get(spread);
+        const result = readSpread(chosenSpread);
+        printer.printReading(result);
+        return;
+    }
 
-        if (card) {
-            const card = tarot().draw();
-            printer.printSingleCard(card);
-            return;
-        }
+    if (card) {
+        const card = drawSingleCard();
+        printer.printSingleCard(card);
+        return;
+    }
 
-        if (list) {
-            const files = await spreads.list();
-            printer.printSpreads(files);
-            return;
-        }
+    if (list) {
+        const files = await spreads.list();
+        printer.printSpreads(files);
+        return;
+    }
 
-        if (load) {
-            console.log('Load');
-            return;
-            // TBD
-        }
-    };
+    if (load) {
+        console.log('Load');
+        return;
+        // TBD
+    }
+};
 
-    return { run };
-}
-
-export default app;
+export default run;

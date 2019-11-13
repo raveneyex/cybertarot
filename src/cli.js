@@ -34,5 +34,5 @@ function parseArgs(rawArgs) {
 
 export function cli(args) {
   const parsedArgs = parseArgs(args);
-  app().run(parsedArgs);
+  app(parsedArgs);
 }

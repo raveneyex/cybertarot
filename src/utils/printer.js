@@ -51,7 +51,7 @@ const printMessage = (message) => {
     }, 9);
 };
 
-const printSpreads = (files) => {
+export const printSpreads = (files) => {
     const title = asTitle(`\t* AVAILABLE SPREADS *`);
     const fileNames = files
         .map(filePath => `\t*  ${filePath.split('/').pop()}\n`)
@@ -60,7 +60,7 @@ const printSpreads = (files) => {
     printMessage(message);
 };
 
-const printHelp = () => {
+export const printHelp = () => {
     const help = `
         ${asTitle('* HELP *')}
 
@@ -83,7 +83,7 @@ const printHelp = () => {
     printMessage(help);
 };
 
-const printReading = (spread) => {
+export const printReading = (spread) => {
     const title = asTitle(`\t* ${spread._name.toLocaleUpperCase()} *\n\n`)
     const entries = Object
         .keys(spread)
@@ -94,7 +94,7 @@ const printReading = (spread) => {
     printMessage(`${title}\n${entries}`);
 }
 
-const printSingleCard = (card) => {
+export const printSingleCard = (card) => {
     const message = `
         ${asTitle('* CARD OF THE MOMENT *')}
 
@@ -103,11 +103,3 @@ const printSingleCard = (card) => {
     printMessage(message);
 };
 
-const printer = {
-    printHelp,
-    printSpreads,
-    printSingleCard,
-    printReading
-};
-
-export default printer;
