@@ -2,13 +2,12 @@ import chalk from 'chalk';
 import {RAVENEYEX_SIGIL_40x40_INVERTED} from './sigil-logo';
 
 const CLEAN_SCREEN_CHARACTER = '\x1Bc';
-const TAB = '\t';
 
 const asTitle = (message) => chalk.bgBlack.red.bold(message);
 
 const asHighlight = (message) => chalk.bgBlack.red(message);
 
-const asKey = (message) => chalk.white.inverse.bold(message);
+const asKey = (message) => chalk.white.inverse.bold(message.toLocaleUpperCase());
 
 const asValue = (message) => chalk.bgBlack.white.underline(message);
 
@@ -53,9 +52,9 @@ const printMessage = (message) => {
 };
 
 const printSpreads = (files) => {
-    const title = asTitle(`${TAB}* AVAILABLE SPREADS *`);
+    const title = asTitle(`\t* AVAILABLE SPREADS *`);
     const fileNames = files
-        .map(filePath => `${TAB}*  ${filePath.split('/').pop()}\n`)
+        .map(filePath => `\t*  ${filePath.split('/').pop()}\n`)
         .join('');
     const message = `${title}\n\n${fileNames}`;
     printMessage(message);
@@ -63,39 +62,46 @@ const printSpreads = (files) => {
 
 const printHelp = () => {
     const help = `
-        ${asTitle("* AVAILABLE SPREADS *")}
+        ${asTitle('* HELP *')}
 
 
         * Use the option -c if you want a single card:
-            ${asHighlight("cybertarot -c")}
+            ${asHighlight('cybertarot -c')}
 
         * Use the option -h to print this help:
-            ${asHighlight("cybertarot -h")}
+            ${asHighlight('cybertarot -h')}
 
         * Use the option -a if you want to list all the available spreads:
-            ${asHighlight("cybertarot -a")}
+            ${asHighlight('cybertarot -a')}
 
         * Use the option -l \`path\` if you want to load the spread in \`path\`:
-            ${asHighlight("cybertarot -l ~/Documents/newSpread.json")}
+            ${asHighlight('cybertarot -l ~/Documents/newSpread.json')}
 
         * Use the option -s \`spread\` to do a reading using \`spread\`:
-            ${asHighlight("cybertarot -s pentagram")}
+            ${asHighlight('cybertarot -s pentagram')}
     `;
     printMessage(help);
 };
 
 const printReading = (spread) => {
-    const title = asTitle(`${TAB}* ${spread._name.toLocaleUpperCase()} *\n`)
+    const title = asTitle(`\t* ${spread._name.toLocaleUpperCase()} *\n\n`)
     const entries = Object
         .keys(spread)
         .filter(key => !key.startsWith('_'))
         .map(key =>
-            `${TAB}${asKey(key.toLocaleUpperCase())}${TAB}${printCard(spread[key])}`)
+            `\t${asKey(key)}\t${printCard(spread[key])}`)
         .join('\n\n');
     printMessage(`${title}\n${entries}`);
 }
 
-const printSingleCard = (card) => console.log(printCard(card));
+const printSingleCard = (card) => {
+    const message = `
+        ${asTitle('* CARD OF THE MOMENT *')}
+
+        ${printCard(card)}
+    `;
+    printMessage(message);
+};
 
 const printer = {
     printHelp,

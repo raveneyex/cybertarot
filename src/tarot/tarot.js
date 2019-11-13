@@ -1,36 +1,20 @@
 import getDeck from './deck';
 
-function tarot({ name, structure }) {
-    if (!structure) {
-        // If no spread is chosen all you can do is ask for a random card
-        return {
-            draw: () => getDeck().drawCard()
-        };
-    }
+function tarot() {
+    const draw = () => getDeck().drawCard();
+    const read = ({ name, structure }) => {
+        const deck = getDeck();
+        const spread = { _name: name };
 
-    
-    /* Inner State */
-    const spread = { _name: name };
-    const deck = getDeck();
-    const slots = Object.keys(structure);
+        const fillSlot = (slot) => spread[slot] = deck.drawCard();
+        Object
+            .keys(structure)
+            .forEach(fillSlot)
 
-    /* Functions */
-    const getSpread = () => spread;
-    const fillSlot = (slot) => spread[slot] = deck.drawCard();
-    const fillSpread = () => [...slots].forEach(fillSlot);
-    const reveal = () => {
-        fillSpread();
-        return getSpread();
+        return spread;
     };
-    const fillNextSlot = () => {
-        const nextSlot = slots.shift();
-        if (nextSlot) {
-            fillSlot(nextSlot);
-        }
-    };
-    
-    /* API */
-    return { fillNextSlot, reveal };
+
+    return { draw, read };
 }
 
 export default tarot;

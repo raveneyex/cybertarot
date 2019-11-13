@@ -12,13 +12,12 @@ function app() {
 
         if (spread) {
             const chosenSpread = spreads.get(spread);
-            const result = tarot(chosenSpread).reveal();
+            const result = tarot().read(chosenSpread);
             printer.printReading(result);
             return;
         }
 
         if (card) {
-            console.log("Your card is\n");
             const card = tarot().draw();
             printer.printSingleCard(card);
             return;
@@ -31,7 +30,7 @@ function app() {
         }
 
         if (load) {
-            console.log("Load");
+            console.log('Load');
             return;
             // TBD
         }
