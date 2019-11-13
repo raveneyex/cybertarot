@@ -9,12 +9,6 @@ import app from './app';
  * -s `value`: choose a spread with name `value`
  */
 function parseArgs(rawArgs) {
-  let showHelp = false;
-
-  if (!rawArgs || rawArgs.length <= 2) {
-    showHelp = true;
-  }
-
   const args = arg({
     '-c': Boolean,
     '-h': Boolean,
@@ -22,17 +16,30 @@ function parseArgs(rawArgs) {
     '-l': String,
     '-s': String
   },{ argv: rawArgs.slice(2) });
-  
+
   return {
-    help: args['-h'] || showHelp,
+    help: args['-h'] || (!rawArgs || rawArgs.length <= 2),
     card: args['-c'],
     list: args['-a'],
-    load: args['-l'],
+    spreadToLoad: args['-l'],
     spread: args['-s']
   };
 }
 
 export function cli(args) {
-  const parsedArgs = parseArgs(args);
-  app(parsedArgs);
+  try {
+    app(parseArgs(args));
+  }
+  catch (err) {
+    if (err.code === 'ARG_UNKNOWN_OPTION') {
+      console.error('Error: Unrecognized option');
+    }
+    else if (err.toString().includes('argument: -l')) {
+      console.error('Error: A path must be supplied');
+    }
+    else if (err.toString().includes('argument: -s')) {
+      console.error('Error: A spread to use must be specified');
+    }
+  }
+  
 }
