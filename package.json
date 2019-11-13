@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A tarot app written in nodejs",
   "main": "index.js",
+  "bin": {
+    "cybertarot": "bin/cybertarot"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
