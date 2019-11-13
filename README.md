@@ -17,23 +17,31 @@ You can then use the app as `cybertarot -<flag>`, where `<flag>` can be one of t
 ### The `-h` option
 
 The `-h` option prints the help menu for the application. No parameters are required.
+
 Usage: `cybertarot -h`
+
 
 ### The `-c` option
 
 The `-c` option randomly draws a card from a freshly-mixed deck.
+
 Usage: `cybertarot -c`
+
 
 ### The `-a` option
 
 The `-a` option lists all the spreads that are currently available for the application.
+
 Note that it is possible to load new spreads using the `-l` option detailed below.
+
 Usage: `cybertarot -a`
+
 
 ### The `-s` option
 
 The `-s` option performs a reading using the supplied `<spread>`.
 If no `<spread>` parameter is supplied an error will be thrown.
+
 A list of available spreads can be queried using the `-a` option.
 
 Usage: `cybertarot -s <spread>`
@@ -41,9 +49,9 @@ Usage: `cybertarot -s <spread>`
 ### The `-l` option
 
 The `-l` option is used to load new spreads into the application.
+
 This option requires a `<path/to/jsonFile.json>` parameter to be supplied.
-The application will attempt to load and validate the JSON file.
-If the validation succeeds it means that the imported JSON has the proper format to be considered a spread and it will be then copied to the spreads folder of the application.
+The application will attempt to load and validate the JSON file; if the validation succeeds it means that the imported JSON has the proper format to be considered a spread and it will be then copied to the spreads folder of the application.
 
 Note that the spread will be saved using the file name of the original json file. i.e. `jsonFile.json`. 
 In the event that a file `jsonFile.json` already exists it will be overwritten.
