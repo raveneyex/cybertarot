@@ -1,9 +1,7 @@
 import { listFiles } from 'list-files-in-dir';
-import path from 'path';
 
 function get(spreadName) {
-    const { spread } = require(`../spreads/${spreadName}.json`);
-    return spread;
+    return require(`../spreads/${spreadName}.json`);
 }
 
 async function list() {
