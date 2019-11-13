@@ -1,7 +1,7 @@
 {
     "name": "Basic Spread",
     "description": "A basic 3-cards spread",
-    "spread": {
+    "structure": {
         "past": null,
         "present": null,
         "future": null
