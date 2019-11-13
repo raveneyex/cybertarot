@@ -76,7 +76,9 @@ In order for a JSON file to be considered a valid `spread` it should adjust to t
 ```
 
 Where the `name` field is a string. The name of the spread, and a mandatory field.
+
 The `description` field is a string. Not currently used and thus optional.
+
 The `structure` field is a javascript object. Mandatory. It is the structure of the reading: each of the object's `keys` corresponds to a card slot to be filled during a reading. The value assigned to these keys is irrelevant and thus whatever the user wants.
 
 ## Available Spreads
