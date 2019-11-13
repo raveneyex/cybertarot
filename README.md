@@ -46,8 +46,6 @@ Usage: `cybertarot -a`
 The `-s` option performs a reading using the supplied `<spread>`.
 If no `<spread>` parameter is supplied an error will be thrown.
 
-A list of available spreads can be queried using the `-a` option.
-
 Usage: `cybertarot -s <spread>`
 
 ### The `-l` option
@@ -57,7 +55,7 @@ The `-l` option is used to load new spreads into the application.
 This option requires a `<path/to/jsonFile.json>` parameter to be supplied.
 The application will attempt to load and validate the JSON file; if the validation succeeds it means that the imported JSON has the proper format to be considered a `spread` and it will be then copied to the spreads folder of the application. An example spread format is detailed in a section below.
 
-Note that the spread will be saved using the file name of the original json file. i.e. `jsonFile.json`. 
+Note that the spread will be saved using the filename of the original json file. i.e. `jsonFile.json`. 
 In the event that a file `jsonFile.json` already exists it will be overwritten.
 
 ## The spread format
