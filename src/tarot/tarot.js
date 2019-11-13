@@ -2,13 +2,11 @@ import getDeck from './deck';
 
 export const readSpread = ({ name, structure }) => {
     const deck = getDeck();
-    const spread = { _name: name };
 
-    Object
+    return Object
         .keys(structure)
-        .forEach((slot) => spread[slot] = deck.drawCard());
-
-    return spread;
+        .map(slot => ({ [slot]: deck.drawCard() }))
+        .reduce((acc, curr) => ({...acc, ...curr}), { _name: name });
 };
 
 export const drawSingleCard = () => getDeck().drawCard();

@@ -41,5 +41,4 @@ export function cli(args) {
       console.error('Error: A spread to use must be specified');
     }
   }
-  
 }
