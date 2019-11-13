@@ -48,7 +48,7 @@ const printMessage = (message) => {
     setTimeout(() => {
         console.log(CLEAN_SCREEN_CHARACTER);
         console.log(message);
-    }, 9);
+    }, 20);
 };
 
 export const printSpreads = (files) => {
@@ -74,7 +74,8 @@ export const printHelp = () => {
         * Use the option -a if you want to list all the available spreads:
             ${asHighlight('cybertarot -a')}
 
-        * Use the option -l \`path\` if you want to load the spread in \`path\`:
+        * Use the option -l \`path\` if you want to load the spread in \`path\` and use it for a reading.
+        * Note that imported spreads are made available for the \`-a\` command.
             ${asHighlight('cybertarot -l ~/Documents/newSpread.json')}
 
         * Use the option -s \`spread\` to do a reading using \`spread\`:

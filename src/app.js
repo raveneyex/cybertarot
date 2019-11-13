@@ -29,7 +29,10 @@ async function app(options) {
     }
 
     else if (spreadToLoad) {
-        loadSpread(spreadToLoad);
+        const loadedSpread = await loadSpread(spreadToLoad);
+        if (loadedSpread) {
+            printReading(readSpread(loadedSpread));
+        }
     }
 }
 
